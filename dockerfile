@@ -1,7 +1,6 @@
-FROM node:14
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["node", "app.js"]
+FROM centos:latest
+MAINTAINER rudhan
+RUN yum -y install httpd
+COPY index.html /var/www/html
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+EXPOSE 80
